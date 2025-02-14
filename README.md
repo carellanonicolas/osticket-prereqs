@@ -31,7 +31,7 @@ Ensure the following are available before installation:
    - Click **OK** and restart the VM
 
 3. **Install PHP, MySQL, and osTicket:**
-   - Download and extract `osTicket-Installation-Files.zip` from the provided repository
+   - Download and extract [osTicket-Installation-Files.zip](https://drive.google.com/uc?export=download&id=1b3RBkXTLNGXbibeMuAynkfzdBC1NnqaD) from the provided repository
    - Install PHP 7.3.8 and configure IIS to use it
    - Install MySQL 5.5.62 and configure the database
    - Copy the `upload` folder to `C:\inetpub\wwwroot\osTicket`
