@@ -37,10 +37,12 @@ Ensure the following are available before installation:
    - Copy the `upload` folder to `C:\inetpub\wwwroot\osTicket`
 
 4. **Set Permissions:**
-   ```powershell
-   icacls "C:\inetpub\wwwroot\osTicket\include\ost-config.php" /inheritance:r
-   icacls "C:\inetpub\wwwroot\osTicket\include\ost-config.php" /grant Everyone:F
-   ```
+   - Assign Permissions: ost-config.php
+   - Disable inheritance -> Remove All
+   - New Permissions -> Everyone -> All
+     
+     **Note:** Disabling inheritance and granting full permissions to `Everyone` is **not** best practice in a real-world scenario. This is done here only for demonstration purposes and should be restricted properly in a production environment.
+
 
 5. **Start osTicket Configuration:**
    - Open a browser and go to `http://localhost/osTicket`
