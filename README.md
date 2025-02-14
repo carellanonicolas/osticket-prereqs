@@ -2,49 +2,51 @@
 <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
 </p>
 
-<h1>osTicket - Prerequisites and Installation</h1>
-This tutorial outlines the prerequisites and installation of the open-source help desk ticketing system osTicket.<br />
+## Overview
+This repository provides a structured approach to setting up osTicket on a Windows 10 Virtual Machine hosted in Microsoft Azure.
 
-<h2>Environments and Technologies Used</h2>
+## Prerequisites
+Ensure the following are available before installation:
+- Azure Virtual Machine (Windows 10, 4 vCPUs)
+- Remote Desktop Access
+- Internet Information Services (IIS) with CGI enabled
+- PHP 7.3.8, MySQL 5.5.62, and required modules
+- osTicket v1.15.8 installation files
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Internet Information Services (IIS)
+## Installation Steps
+1. **Create an Azure Virtual Machine:**
+   - Sign in to the [Azure Portal](https://portal.azure.com/)
+   - Click **Create a resource** → **Virtual Machine**
+   - Choose the following configuration:
+     - **Operating System:** Windows 10 (latest available version)
+     - **Size:** Standard_D4s_v3 (4 vCPUs)
+     - **Username:** (Set to whatever you'll remember)
+     - **Password:** (Set to whatever you'll remember)
+   - Click **Review + Create**, then **Create**
 
-<h2>Operating Systems Used </h2>
+2. **Enable IIS with CGI:**
+   - Log into the VM using Remote Desktop
+   - Open **Control Panel** → **Programs** → **Turn Windows features on or off**
+   - Check **Internet Information Services (IIS)** and under **Application Development Features**, enable **CGI**
+   - Click **OK** and restart the VM
 
-- Windows 10</b> (21H2)
+3. **Install PHP, MySQL, and osTicket:**
+   - Download and extract `osTicket-Installation-Files.zip` from the provided repository
+   - Install PHP 7.3.8 and configure IIS to use it
+   - Install MySQL 5.5.62 and configure the database
+   - Copy the `upload` folder to `C:\inetpub\wwwroot\osTicket`
 
-<h2>List of Prerequisites</h2>
+4. **Set Permissions:**
+   ```powershell
+   icacls "C:\inetpub\wwwroot\osTicket\include\ost-config.php" /inheritance:r
+   icacls "C:\inetpub\wwwroot\osTicket\include\ost-config.php" /grant Everyone:F
+   ```
 
-- Item 1
-- Item 2
-- Item 3
-- Item 4
-- Item 5
+5. **Start osTicket Configuration:**
+   - Open a browser and go to `http://localhost/osTicket`
+   - Follow the setup wizard to complete the installation
 
-<h2>Installation Steps</h2>
+## Notes
+After installation, delete the `setup` directory and restrict permissions for `ost-config.php` as per security best practices.
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
